@@ -9,6 +9,7 @@ import {
     permissionManagementRouteId,
     platformRouteId,
     userManagementRouteId,
+    termsRouteId,
 } from '~/apps/admin/src/config/routes.config'
 import { platformSkillRouteId } from '~/apps/admin/src/platform/routes.config'
 
@@ -64,6 +65,10 @@ export const SystemAdminTabsConfig: TabsNavItem[] = [
                 id: `${platformRouteId}/${gamificationAdminRouteId}`,
                 title: 'Badges',
 
+            },
+            {
+                id: `${platformRouteId}/${termsRouteId}`,
+                title: 'Terms',
             },
         ],
         id: platformRouteId,

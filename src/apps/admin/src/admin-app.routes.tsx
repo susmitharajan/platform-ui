@@ -17,6 +17,7 @@ import {
     platformRouteId,
     rootRoute,
     userManagementRouteId,
+    termsRouteId,
 } from './config/routes.config'
 import { platformSkillRouteId } from './platform/routes.config'
 
@@ -127,6 +128,23 @@ const BadgeListingPage: LazyLoadedComponent = lazyLoad(
 )
 const CreateBadgePage: LazyLoadedComponent = lazyLoad(
     () => import('./platform/gamification-admin/src/pages/create-badge/CreateBadgePage'),
+)
+
+// Terms Management Components
+const Terms: LazyLoadedComponent = lazyLoad(
+    () => import('./platform/terms-management/Terms'),
+)
+const TermsPage: LazyLoadedComponent = lazyLoad(
+    () => import('./platform/terms-management/TermsPage'),
+    'TermsPage',
+)
+const TermEditPage: LazyLoadedComponent = lazyLoad(
+    () => import('./platform/terms-management/TermEditPage'),
+    'TermEditPage',
+)
+const TermUsersPage: LazyLoadedComponent = lazyLoad(
+    () => import('./platform/terms-management/TermUsersPage'),
+    'TermUsersPage',
 )
 
 export const toolTitle: string = ToolTitle.admin
@@ -309,6 +327,34 @@ export const adminRoutes: ReadonlyArray<PlatformRoute> = [
                     {
                         element: <BadgeDetailPage />,
                         route: `${gamificationAdminRouteId}${baseDetailPath}/:id`,
+                    },
+                    // Terms Management Module
+                    {
+                        children: [
+                            {
+                                element: <TermsPage />,
+                                id: 'terms-page',
+                                route: '',
+                            },
+                            {
+                                element: <TermEditPage />,
+                                id: 'term-edit-page',
+                                route: ':id/edit',
+                            },
+                            {
+                                element: <TermEditPage />,
+                                id: 'term-new-page',
+                                route: 'new',
+                            },
+                            {
+                                element: <TermUsersPage />,
+                                id: 'term-users-page',
+                                route: ':id/users',
+                            },
+                        ],
+                        element: <Terms />,
+                        id: termsRouteId,
+                        route: termsRouteId,
                     },
                 ],
                 element: <Platform />,
